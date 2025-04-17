@@ -1,11 +1,13 @@
 #include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 #include "tasks.h"
 
 int main(void) {
-    setlocale(LC_ALL, "Rus");
+    setlocale(LC_ALL, "C.UTF-8");
+    SetConsoleOutputCP(65001);
 
     printf("Подготовлено студентом Уваровым Никитой из группы 4ИТБ-2\n");
     printf("Все лабораторные работы выполнялись под 13 вариантом\n\n");
@@ -19,7 +21,6 @@ int main(void) {
     printf("6. Структура\n");
     printf("7. Функции\n");
     printf("8. Перегрузка и шаблоны функций\n");
-    printf("9. Динамические структуры данных\n");
 
     while (1) {
         printf("\nВведите номер лабораторной работы, которой вы хотите запустить:\n");
@@ -53,9 +54,6 @@ int main(void) {
                 break;
             case 8:
                 task8();
-                break;
-            case 9:
-                task9();
                 break;
             default:
                 printf("Лабораторной с номером %d не существует", n);

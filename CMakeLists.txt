@@ -16,10 +16,9 @@ add_executable(Example main.c
         tasks/task6.c
         tasks/task7.c
         tasks/task7/task3_rework.c
-        tasks/task8.c
-        tasks/task9.c
         tasks/task7/task4_rework.c
         tasks/task7/task5_rework.c
+        tasks/task8.c
 )
 
 target_link_libraries(Example m)
