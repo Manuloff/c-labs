@@ -7,7 +7,7 @@
 #include "../tasks.h"
 
 void task5() {
-    FILE *file = fopen("../task5.txt", "r");
+    FILE *file = fopen("../data/task5.txt", "r");
     if (!file) {
         printf("Ошибка чтения файла\n");
         return;

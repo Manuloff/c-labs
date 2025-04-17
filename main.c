@@ -17,6 +17,8 @@ int main(void) {
     printf("4. Двумерные массивы\n");
     printf("5. Строки и файлы\n");
     printf("6. Структура\n");
+    printf("7. Функции\n");
+    printf("8. Перегрузка и шаблоны функций\n");
     printf("9. Динамические структуры данных\n");
 
     while (1) {
@@ -45,6 +47,12 @@ int main(void) {
                 break;
             case 6:
                 task6();
+                break;
+            case 7:
+                task7();
+                break;
+            case 8:
+                task8();
                 break;
             case 9:
                 task9();

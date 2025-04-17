@@ -3,18 +3,19 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "../tasks.h"
 
 struct Note {
-    char firstName[50];
-    char lastName[50];
-    char phone[50];
+    char firstName[20];
+    char lastName[20];
+    char phone[126];
     int birthday[3]; // dd.mm.yyyy
 };
 
 void printNote(int i, struct Note note) {
-    printf("%02d. %20s%20s|%-12s|%02d.%02d.%04d\n",
+    printf("%02d. %-20s%-20s | %-12s | %02d.%02d.%04d\n",
            i,
            note.firstName,
            note.lastName,
@@ -23,6 +24,18 @@ void printNote(int i, struct Note note) {
            note.birthday[1],
            note.birthday[2]
     );
+}
+
+int compareNotes(const void *a, const void *b) {
+    const struct Note *na = a;
+    const struct Note *nb = b;
+
+    int lastCmp = strcmp(na->lastName, nb->lastName);
+    if (lastCmp != 0) {
+        return lastCmp;
+    }
+
+    return strcmp(na->firstName, nb->firstName);
 }
 
 void task6() {
@@ -71,9 +84,9 @@ void task6() {
         }
 
     } else if (useFile == 1) {
-        FILE *file = fopen("../tasks6.txt", "r");
+        FILE *file = fopen("../data/task6.txt", "r");
         if (!file) {
-            printf("Не удалось открыть файл tasks6.txt\n");
+            printf("Не удалось открыть файл task6.txt\n");
             return;
         }
 
@@ -110,12 +123,20 @@ void task6() {
 
         printf("Считанные данные:\n");
 
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < size; i++) {
             printNote(i + 1, notes[i]);
         }
 
     } else {
         return;
+    }
+
+    qsort(notes, size, sizeof(struct Note), compareNotes);
+
+    printf("\nОтсортированные данные:\n");
+
+    for (int i = 0; i < size; i++) {
+        printNote(i + 1, notes[i]);
     }
 
     int targetMonth;
