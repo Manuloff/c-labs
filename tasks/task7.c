@@ -18,20 +18,20 @@ void task7() {
     while (1) {
         int input;
 
-        printf("\nВведите номер переработанной работы: ");
+        printf("\nВведите номер переработанной работы:\n");
         scanf("%d", &input);
 
         switch (input) {
             case 0:
                 return;
             case 3:
-                task3_rework();
+                task7_3();
                 break;
             case 4:
-                task4_rework();
+                task7_4();
                 break;
             case 5:
-                task5_rework();
+                task7_5();
                 break;
             default:
                 printf("Работы с номером %d не существует", input);

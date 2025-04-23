@@ -14,8 +14,8 @@ void task6();
 void task7();
 void task8();
 
-void task3_rework();
-void task4_rework();
-void task5_rework();
+void task7_3();
+void task7_4();
+void task7_5();
 
 #endif //TASKS_H

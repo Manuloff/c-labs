@@ -15,9 +15,9 @@ add_executable(Example main.c
         tasks/task5.c
         tasks/task6.c
         tasks/task7.c
-        tasks/task7/task3_rework.c
-        tasks/task7/task4_rework.c
-        tasks/task7/task5_rework.c
+        tasks/task7/task7_3.c
+        tasks/task7/task7_4.c
+        tasks/task7/task7_5.c
         tasks/task8.c
 )
 

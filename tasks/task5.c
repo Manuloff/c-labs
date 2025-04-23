@@ -1,8 +1,8 @@
 //
 // Created by nikita on 20.03.25.
 //
-#include <ctype.h>
 #include <stdio.h>
+#include <ctype.h>
 
 #include "../tasks.h"
 
