@@ -1,13 +1,20 @@
 #include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
 
 #include "tasks.h"
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 int main(void) {
     setlocale(LC_ALL, "C.UTF-8");
+
+    // Только для Windows — установить кодовую страницу UTF-8
+    #ifdef _WIN32
     SetConsoleOutputCP(65001);
+    #endif
 
     printf("Подготовлено студентом Уваровым Никитой из группы 4ИТБ-2\n");
     printf("Все лабораторные работы выполнялись под 13 вариантом\n\n");

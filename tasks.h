@@ -1,9 +1,10 @@
-//
-// Created by nikita on 20.03.25.
-//
-
+// tasks.h
 #ifndef TASKS_H
 #define TASKS_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 void task1();
 void task2();
@@ -17,5 +18,9 @@ void task8();
 void task7_3();
 void task7_4();
 void task7_5();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //TASKS_H

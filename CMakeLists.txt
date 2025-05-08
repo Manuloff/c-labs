@@ -1,13 +1,14 @@
-cmake_minimum_required(VERSION 3.30)
-project(Example C)
+cmake_minimum_required(VERSION 3.16)  # более совместимая минимальная версия
+project(Example LANGUAGES C CXX)
 
 set(CMAKE_C_STANDARD 11)
-link_libraries(m)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
-include_directories(tasks)
-include_directories(tasks/task7)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Example main.c
+add_executable(Example
+        main.c
         tasks/task1.c
         tasks/task2.c
         tasks/task3.c
@@ -18,7 +19,15 @@ add_executable(Example main.c
         tasks/task7/task7_3.c
         tasks/task7/task7_4.c
         tasks/task7/task7_5.c
-        tasks/task8.c
+        tasks/task8.cpp
+        tasks/task8/task8_3.cpp
+        tasks/task8/task8_4.cpp
 )
 
-target_link_libraries(Example m)
+target_include_directories(Example PRIVATE
+        tasks
+        tasks/task7
+        tasks/task8
+)
+
+target_link_libraries(Example PRIVATE m)

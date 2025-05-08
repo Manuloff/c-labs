@@ -35,7 +35,7 @@ int compareNotes(const void *a, const void *b) {
         return lastCmp;
     }
 
-    return strcmp(na->firstName, nb->firstName);
+    return strcmp(na->firstName, nb->firstName);//---1
 }
 
 void task6() {
@@ -122,7 +122,7 @@ void task6() {
         fclose(file);
 
         printf("Считанные данные:\n");
-
+//--3
         for (int i = 0; i < size; i++) {
             printNote(i + 1, notes[i]);
         }
@@ -162,5 +162,5 @@ void task6() {
         printf("Нет записей, у которых месяц в дате рождения равен %d\n", targetMonth);
     }
 
-    free(notes);
+    free(notes);//-----2
 }
