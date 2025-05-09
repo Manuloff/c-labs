@@ -19,7 +19,7 @@ void printMatrix(int rows, int cols, int **matrix) {
 }
 
 int** loadMatrixFromFile(int* rows, int* cols) {
-    FILE* file = fopen("../data/task7_4.txt", "r");
+    FILE* file = fopen("../data/task7_2.txt", "r");
 
     /*
      * 3x3
@@ -29,7 +29,7 @@ int** loadMatrixFromFile(int* rows, int* cols) {
      */
 
     if (!file) {
-        printf("Не удалось открыть файл task7_4.txt\n");
+        printf("Не удалось открыть файл task7_2.txt\n");
         fclose(file);
         return NULL;
     }
@@ -177,7 +177,7 @@ void shiftMatrix(int rows, int cols, int **matrix, int mode, int shift) {
     free(temp);
 }
 
-void task7_4() {
+void task7_2() {
     printf("Общее задание:\n");
     printf("\tЗадания этого семинара соответствуют приведенным в Учебнике на с. 139. \n"
            "\tРекомендуется выполнять каждое задание в двух вариантах: используя локальные\n"
@@ -196,7 +196,7 @@ void task7_4() {
 
         int useFile;
 
-        printf("\nМожно использовать заранее заготовленный массив из файла data/task7_4.txt\n");
+        printf("\nМожно использовать заранее заготовленный массив из файла data/task7_2.txt\n");
         printf("Желаете ли вы использовать его?\n");
         printf("\t0 - нет\t1 - да\n");
 

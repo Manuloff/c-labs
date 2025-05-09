@@ -24,14 +24,14 @@ void task7() {
         switch (input) {
             case 0:
                 return;
+            case 1:
+                task7_1();
+                break;
+            case 2:
+                task7_2();
+                break;
             case 3:
                 task7_3();
-                break;
-            case 4:
-                task7_4();
-                break;
-            case 5:
-                task7_5();
                 break;
             default:
                 printf("Работы с номером %d не существует", input);

@@ -16,12 +16,13 @@ add_executable(Example
         tasks/task5.c
         tasks/task6.c
         tasks/task7.c
+        tasks/task7/task7_1.c
+        tasks/task7/task7_2.c
         tasks/task7/task7_3.c
-        tasks/task7/task7_4.c
-        tasks/task7/task7_5.c
         tasks/task8.cpp
+        tasks/task8/task8_1.cpp
+        tasks/task8/task8_2.cpp
         tasks/task8/task8_3.cpp
-        tasks/task8/task8_4.cpp
 )
 
 target_include_directories(Example PRIVATE
