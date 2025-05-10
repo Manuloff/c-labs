@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <cmath>
 #include "../tasks.h"
 
 using namespace std;
@@ -61,7 +62,94 @@ T* getArrayFromFile(int& size) {
     return arr;
 }
 
-void task8_1() {
+template <typename T>
+int countBetweenElements(const T* arr, const int size, const T A, const T B) {
+    if (arr == nullptr || size < 0) {
+        return -1;
+    }
+
+    int count = 0;
+
+    for (int i = 0; i < size; i++) {
+        const T e = arr[i];
+
+        if (e < A || e > B) {
+            continue;
+        }
+
+        count++;
+    }
+
+    return count;
+}
+
+template <typename T>
+int maxElementIndex(const T* arr, const int size) {
+    if (size <= 0 || arr == nullptr) {
+        return -1;
+    }
+
+    int maxIndex = 0;
+    float maxValue = arr[0];
+
+    for (int i = 1; i < size; i++) {
+        float element = arr[i];
+
+        if (maxValue > element) {
+            continue;
+        }
+
+        maxValue = element;
+        maxIndex = i;
+    }
+
+    return maxIndex;
+}
+
+template <typename T>
+T sumAfterIndex(const T* arr, const int size, const int index) {
+    if (arr == nullptr || index < -1 || index >= size) {
+        return 0;
+    }
+
+    float sum = 0;
+
+    for (int i = index + 1; i < size; i++) {
+        sum += arr[i];
+    }
+
+    return sum;
+}
+
+template <typename T>
+void sortByAbsDesc(T* arr, const int size) {
+    if (arr == nullptr || size == 0) {
+        return;
+    }
+
+    // Сортировка простого выбора
+    for (int k = 0; k < size - 1; k++) {
+        T value = arr[k];
+        int index = k;
+
+        for (int i = k + 1; i < size; i++) {
+            const T element = arr[i];
+
+            if (abs(value) > abs(element)) {
+                continue;
+            }
+
+            value = element;
+            index = i;
+        }
+
+        arr[index] = arr[k];
+        arr[k] = value;
+    }
+}
+
+template <typename T>
+void _task8_1() {
     cout << "Общее задание" << endl;
     cout << "\tИсходные данные для всех вариантов — n вещественных величин. При написании" << endl;
     cout << "\tпрограмм можно использовать как динамические, так и не-динамические массивы." << endl;
@@ -78,25 +166,69 @@ void task8_1() {
         cout << "Желаете ли вы использовать его?" << endl;
         cout << "\t0 - нет\t1 - да" << endl;
 
-        // Нужен массив из целых чисел? Меняем float* на int*
-        float* arr = nullptr;
+        T* arr = nullptr;
         int size = 0;
 
         if (input<bool>("Неверный ввод, попробуйте ещё раз")) {
-            arr = getArrayFromFile<float>(size);
+            arr = getArrayFromFile<T>(size);
         } else {
-            arr = getArrayFromInput<float>(size);
+            arr = getArrayFromInput<T>(size);
         }
 
         if (!arr) {
             break;
         }
 
-        cout << "Исходные данные";
+        cout << "Исходные данные: ";
         printArray(arr, size);
         cout << endl;
 
+        //
 
+        cout << "Введите минимальное значение (A): ";
+        T A = input<T>("Некорректное значение, повторите ввод");
+
+        cout << "Введите максимальное значение (B): ";
+        T B = input<T>("Некорректное значение, повторите ввод");
+
+        if (A > B) {
+            const T temp = A;
+            A = B;
+            B = temp;
+
+            cout << "A > B, поэтому числа поменялись местами" << endl;
+        }
+
+        int count = countBetweenElements(arr, size, A, B);
+        if (count != -1) {
+            cout << "Количество элементов, лежащих в диапазоне от " << A << " до " << B << ", равно " << count << endl;
+        } else {
+            cout << "Ошибка массива" << endl;
+        }
+
+        //
+
+        int maxIndex = maxElementIndex(arr, size);
+        if (maxIndex != -1) {
+            cout << "Найденное максимальное значение - " << arr[maxIndex] << ", его индекс - " << maxIndex << endl;
+
+            T sum = sumAfterIndex(arr, size, maxIndex);
+
+            cout << "Сумма элементов, расположенных после максимального элемента: " << sum << endl;
+
+        } else {
+            cout << "Не удалось найти максимальный индекс" << endl;
+        }
+
+        //
+
+        sortByAbsDesc(arr, size);
+
+        cout << "Отсортированный массив по убыванию модуля элемента: ";
+        printArray(arr, size);
+        cout << endl;
+
+        //
 
         delete[] arr;
 
@@ -107,4 +239,9 @@ void task8_1() {
             break;
         }
     }
+}
+
+void task8_1() {
+    // Если нужно, чтобы он работал с целыми числами, то просто указываем тут int.
+    _task8_1<float>();
 }
