@@ -176,7 +176,7 @@ void _task8_1() {
         }
 
         if (!arr) {
-            break;
+            continue;
         }
 
         cout << "Исходные данные: ";
