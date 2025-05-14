@@ -7,7 +7,7 @@
 
 #include "../tasks.h"
 
-void task3(void) {
+void task3() {
     int n;
     printf("Введите размер массива: ");
     scanf("%d", &n);
